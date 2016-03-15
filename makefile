@@ -11,7 +11,7 @@ help:
 	@echo "  push     to push the image to the docker registry"
 
 build:
-	docker build -t $(ACCOUNT)/virtualbox-scratch
+	docker build -t $(ACCOUNT)/virtualbox-scratch .
 
 login:
 	docker login -u $(ACCOUNT)
