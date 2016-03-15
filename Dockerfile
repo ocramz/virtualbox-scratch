@@ -31,16 +31,18 @@ RUN apt-get install -y gcc g++ bcc iasl xsltproc uuid-dev zlib1g-dev libidl-dev 
                 # ia32-libs \
                 libc6-dev-i386 lib32gcc1 gcc-multilib \
                 lib32stdc++6 g++-multilib \
-                mkisofs
+                mkisofs \
+                libvpx1
 
 # # Open Watcom compiler
 
-RUN wget -q -O openwatcom-c http://openwatcom.mirror.fr/open-watcom-c-linux-1.9 
+RUN wget -q -O open-watcom-c-linux-1.9 http://openwatcom.mirror.fr/open-watcom-c-linux-1.9 
 
-RUN wget -q -O openwatcom-f http://openwatcom.mirror.fr/open-watcom-f77-linux-1.9
+RUN wget -q -O open-watcom-f77-linux-1.9 http://openwatcom.mirror.fr/open-watcom-f77-linux-1.9
 
-RUN chmod ugo+rwx openwatcom-c && chmod ugo+rwx openwatcom-f
+RUN chmod ugo+rwx open-watcom-c-linux-1.9 && chmod ugo+rwx open-watcom-f77-linux-1.9
 
+RUN install -S open-watcom-c-linux-1.9 open-watcom-f77-linux-1.9 /bin
 
 
 # # virtualbox sources
