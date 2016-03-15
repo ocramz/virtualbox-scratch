@@ -1,4 +1,6 @@
-FROM debian:8.3
+# FROM debian:8.3
+
+FROM ubuntu:12.04
 MAINTAINER Marco Zocca <surname dot name gmail>
 
 RUN apt-get update
