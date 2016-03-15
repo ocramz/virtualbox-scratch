@@ -4,11 +4,15 @@ MAINTAINER Marco Zocca <surname dot name gmail>
 RUN apt-get update
 RUN apt-get install -y apt-transport-https ca-certificates
 
+# # build tools
+
+RUN apt-get install -y wget curl bzip2
+
 # ### compile VirtualBox from scratch, wheee !
 
 # # virtualbox prerequisites
 
-apt-get install gcc g++ bcc iasl xsltproc uuid-dev zlib1g-dev libidl-dev \
+RUN apt-get install -y gcc g++ bcc iasl xsltproc uuid-dev zlib1g-dev libidl-dev \
                 libsdl1.2-dev libxcursor-dev libasound2-dev libstdc++5 \
                 libhal-dev libpulse-dev libxml2-dev libxslt1-dev \
                 python-dev libqt4-dev qt4-dev-tools libcap-dev \
@@ -23,5 +27,9 @@ apt-get install gcc g++ bcc iasl xsltproc uuid-dev zlib1g-dev libidl-dev \
                 lib32stdc++6 g++-multilib
 
 
+# # virtualbox sources
 
-# http://download.virtualbox.org/virtualbox/5.0.16/VirtualBox-5.0.16.tar.bz2
+ENV VIRTUALBOX_VER 5.0.16
+
+RUN wget http://download.virtualbox.org/virtualbox/${VIRTUALBOX_VER}/VirtualBox-${VIRTUALBOX_VER}.tar.bz2 | tar xjvf && ls -lsA
+
