@@ -49,9 +49,7 @@ WORKDIR VirtualBox-${VIRTUALBOX_VER}
 
 # Change to the root directory of the sources and execute the configure script:
 
-RUN ./configure --disable-hardening
-
-RUN cat VirtualBox-${VIRTUALBOX_VER}/configure.log
+RUN ./configure --disable-hardening && cat configure.log
 
 # If it finds everything it needs, it will create a file called 'AutoConfig.kmk' containing paths to the various tools on your system. Also, it will create an environment setup script called env.sh. This step only has to be done once (if something changes in your build tool setup, you might have to repeat it but keep in mind that both output files will be overwritten).
 # The switch --disable-hardening should not be used for building packages for redistribution or for production use.
