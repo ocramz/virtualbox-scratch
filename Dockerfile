@@ -32,7 +32,7 @@ RUN apt-get install -y gcc g++ bcc iasl xsltproc uuid-dev zlib1g-dev libidl-dev 
                 libc6-dev-i386 lib32gcc1 gcc-multilib \
                 lib32stdc++6 g++-multilib \
                 mkisofs \
-                libvpx1
+                libvpx
 
 # # Open Watcom compiler
 
