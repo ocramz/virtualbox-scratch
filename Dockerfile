@@ -37,7 +37,7 @@ RUN apt-get install -y gcc g++ bcc iasl xsltproc uuid-dev zlib1g-dev libidl-dev 
 
 ENV VIRTUALBOX_VER 5.0.16
 
-RUN wget -O vb.tar.bz2 http://download.virtualbox.org/virtualbox/${VIRTUALBOX_VER}/VirtualBox-${VIRTUALBOX_VER}.tar.bz2 && tar xjf vb.tar.bz2
+RUN wget -quiet -O vb.tar.bz2 http://download.virtualbox.org/virtualbox/${VIRTUALBOX_VER}/VirtualBox-${VIRTUALBOX_VER}.tar.bz2 && tar xjf vb.tar.bz2
 
 RUN ls -lsA
 
@@ -50,6 +50,8 @@ WORKDIR VirtualBox-${VIRTUALBOX_VER}
 # Change to the root directory of the sources and execute the configure script:
 
 RUN ./configure --disable-hardening
+
+RUN cat VirtualBox-${VIRTUALBOX_VER}/configure.log
 
 # If it finds everything it needs, it will create a file called 'AutoConfig.kmk' containing paths to the various tools on your system. Also, it will create an environment setup script called env.sh. This step only has to be done once (if something changes in your build tool setup, you might have to repeat it but keep in mind that both output files will be overwritten).
 # The switch --disable-hardening should not be used for building packages for redistribution or for production use.
