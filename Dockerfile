@@ -37,21 +37,27 @@ RUN apt-get install -y gcc g++ bcc iasl xsltproc uuid-dev zlib1g-dev libidl-dev 
 
 ENV VIRTUALBOX_VER 5.0.16
 
-RUN wget -O vb.tar.bz2 http://download.virtualbox.org/virtualbox/${VIRTUALBOX_VER}/VirtualBox-${VIRTUALBOX_VER}.tar.bz2 && tar xjvf vb.tar.bz2
+RUN wget -O vb.tar.bz2 http://download.virtualbox.org/virtualbox/${VIRTUALBOX_VER}/VirtualBox-${VIRTUALBOX_VER}.tar.bz2 && tar xjf vb.tar.bz2
 
 RUN ls -lsA
+
+WORKDIR VirtualBox-${VIRTUALBOX_VER}
 
 
 
 # # BUILD VIRTUALBOX (from https://www.virtualbox.org/wiki/Linux%20build%20instructions)
 
 # Change to the root directory of the sources and execute the configure script:
-# ./configure --disable-hardening
+
+RUN ./configure --disable-hardening
+
 # If it finds everything it needs, it will create a file called 'AutoConfig.kmk' containing paths to the various tools on your system. Also, it will create an environment setup script called env.sh. This step only has to be done once (if something changes in your build tool setup, you might have to repeat it but keep in mind that both output files will be overwritten).
 # The switch --disable-hardening should not be used for building packages for redistribution or for production use.
 
 # Whenever you want to build VirtualBox, you have to open a shell and source the generated environment setup script 'env.sh', i.e. do
-# source ./env.sh
+
+RUN source ./env.sh
+
 # To build a release package, type
 # kmk all
 # This produces the required binaries in out/linux.x86/release/bin/. If you want to build a debug version, type
