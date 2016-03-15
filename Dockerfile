@@ -19,7 +19,9 @@ RUN apt-get install -y gcc g++ bcc iasl xsltproc uuid-dev zlib1g-dev libidl-dev 
                 libxmu-dev mesa-common-dev libglu1-mesa-dev \
                 linux-kernel-headers libcurl4-openssl-dev libpam0g-dev \
                 libxrandr-dev libxinerama-dev libqt4-opengl-dev makeself \
-                libdevmapper-dev default-jdk python-central \
+                libdevmapper-dev default-jdk \
+                python3 \
+                # python-central \ ## DEPRECATED FOR dh-python (python3)
                 texlive-latex-base \
                 texlive-latex-extra texlive-latex-recommended \
                 texlive-fonts-extra texlive-fonts-recommended \ 
