@@ -37,7 +37,7 @@ RUN apt-get install -y gcc g++ bcc iasl xsltproc uuid-dev zlib1g-dev libidl-dev 
 
 ENV VIRTUALBOX_VER 5.0.16
 
-RUN wget -O vb.tar.bz2 http://download.virtualbox.org/virtualbox/${VIRTUALBOX_VER}/VirtualBox-${VIRTUALBOX_VER}.tar.bz2 | tar xjvf vb.tar.bz2
+RUN wget -O vb.tar.bz2 http://download.virtualbox.org/virtualbox/${VIRTUALBOX_VER}/VirtualBox-${VIRTUALBOX_VER}.tar.bz2 && tar xjvf vb.tar.bz2
 
 RUN ls -lsA
 
